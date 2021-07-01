@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    width: 80%;
+    margin-left: 10%;
+    height: 80px;
+    background-color: rgb(24, 108, 209);
+    margin-top: -10px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.title, .server, .port {
+    display: inline-block;
+}
+
+.title {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.port {
+    width: 100px;
+}
+
+.server, .port{
+    margin-top: 30px;
+    float: right;
+    margin-right: 25px;
+    height: 30px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+
+.server:read-only, .port:read-only {
+    color: grey;
+    background-color: #f3f3f3;
+  }
+
+.server:focus, .port:focus {
+    outline:none;
+}
+
+
+.info {
+    width: 80%;
+    margin-left: 10%;
+    background-color: #fff;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.left {
+    text-align: left;
+    display: inline-block;
+    width: 30%;
+}
+
+.center {
+    text-align: center;
+    display: inline-block;
+    width: 30%;
+    margin-left: 5%;
+}
+
+.right {
+    text-align: right;
+    display: inline-block;
+    width: 30%;
+    margin-left: 5%;
+}
+
+.parkStatus {
+    border-radius: 15px;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 80px;
+    background-color: rgb(231, 231, 231);
+}
+
+.car {
+    border-radius: 15px;
+    text-align: center;
+    width: 21%;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+.animation {
+    animation-name: glow;
+    animation-duration: 1.5s;
+}
+
+@keyframes glow {
+    0%   {background-color: rgba(255, 0, 0, 0.6)}
+    5%  {background-color: rgba(24, 108, 209, 0.5)}
+    50%  {background-color: rgba(255, 0, 0, 0.6)}
+    100%  {background-color: rgba(255, 0, 0, 0.6)}
+  }
+
+.plate {
+    font-size: 25px; 
+    margin-bottom: -5px;  
+}
+
+.brand {
+    font-size: 10px;
+    overflow: hidden;
+}
+
+.empty {
+    border-radius: 15px;
+    font-size: 25px;
+    text-align: center;
+    width: 21%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    height: 50px;
+    display: inline-block;
+    background-color: rgba(0, 189, 0, 0.7);
+}
+
+.index0 {
+    margin-top: 10px;
+}
+
+.overlay {
+    position: fixed;
+    display: show;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+}
+
+.popup {
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    top: 25%;
+    left: 25%;
+    text-align: center;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+.popup h2 {
+    font-size: 15px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: rgb(24, 108, 209);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.button {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    font-weight: bolder;
+    border-radius: 10px;
+    background: silver;
+}
+
+.connect {
+    position: fixed;
+    z-index: 3;
+    left: 10%;
+    bottom: 25px;
+    width: 80%;
+    height: 30px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: #929292;
+    background-color: #f0f0f0;
+    color: #000000;
+    border-style: solid;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+.connect:hover {
+    background-color: rgba(24, 108, 209, 1);
+    color: white;
+}
+
+.status_true {
+    color: green;
+    font-weight: bold;
+}
+
+.status_false {
+    color: red;
+    font-weight: bold;
+}
+
+.spanQueue {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 890px) {
+    .left, .center, .right {
+        text-align: left;
+        display: block;
+        width: 100%;
+        margin-left: 0;
+    }
+    .info {
+        font-size: 20px;
+    }
+    .plate {
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+    .plate, .empty {
+        font-size: 13px;
+    }
+    .brand {
+        font-size: 8px;
+    }
+    .spanNumber, .spanQueue, .status_false, .status_true {
+        position: absolute;
+        right: 10%;
+    }
+    header {
+        margin: 0;
+        margin-top: -15px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .title {
+        display: none;
+    }
+    .port {
+        width: 15%;
+        margin-right: 10px;
+    }
+    .server {
+        float: left;
+        margin-left: 10px;
+        margin-right: auto;
+        width: 75%;
+    }
+    .popup {
+        width: 80%;
+        left: 10%;
+    }
+}

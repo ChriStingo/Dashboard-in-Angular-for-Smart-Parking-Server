@@ -1,0 +1,18 @@
+compile:
+	@echo -en '--- Compilazione ---\n\n'
+	javac ./Labo7PCAD/Client/Client.java
+	javac ./Labo7PCAD/Server/ThreadPooledServer.java
+	cp ./gson.jar ./Labo7PCAD/Server/ThreadPooledServer.java
+	
+runServer:
+	@echo -en '--- Esecuzione Server --- \n\n'
+	java -cp ./gson.jar Labo7PCAD.Server.ThreadPooledServer
+
+runClient:
+	@echo -en '--- Esecuzione Client --- \n\n'
+	java Labo7PCAD.Client.Client
+
+clean:
+	$(RM) ./Labo7PCAD/Server/*.class
+	$(RM) ./Labo7PCAD/Client/*.class
+	$(RM) ./error.log

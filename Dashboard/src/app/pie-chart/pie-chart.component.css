@@ -1,0 +1,11 @@
+.chart-wrapper {
+    width: 40%;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+@media screen and (max-width: 800px) {
+    .chart-wrapper {
+        width: 100%;
+    }
+}

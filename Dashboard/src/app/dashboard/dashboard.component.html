@@ -1,0 +1,48 @@
+<header>
+    <h1 class="title">Dashboard</h1>
+    <!-- Inverse order, float: right on css -->
+    <input class="port" type="text" placeholder="Port" [readonly]="connection && !reconnect" [(ngModel)]="port">
+    <input class="server" type="text" placeholder="Server" [readonly]="connection && !reconnect" [(ngModel)]="server">
+</header>
+
+<div class="info"> 
+    <div class="left">
+        Status: <span class="status_{{ (connectionStatus == 'Connected') }}">{{ connectionStatus }}</span>
+    </div>
+    <div class="center">
+        Number of parks: <span class="spanNumber">{{ parkingNumber }}</span>
+    </div>
+    <div class="right">
+        Cars in queue: <span class="spanQueue">{{ queueNumber }}</span>
+    </div>
+    <app-pie-chart [pieChartData]="pieData" *ngIf="connection == true"></app-pie-chart>
+    <!-- charts: https://www.positronx.io/angular-chart-js-tutorial-with-ng2-charts-examples/ -->
+    <app-line-chart [lineChartData]="lineData" *ngIf="connection == true"></app-line-chart>
+</div>
+
+<div class="closed" *ngIf="closed">
+    <div class='overlay'>
+        <div class='popup'>
+            <div class='close' (click)="closed=false">x</div>
+            <h2>Server closed</h2>
+            <p>Closing this pop-up you can see the last parking status</p>
+        </div>
+    </div>
+</div>
+
+<div class="parkStatus" *ngIf="connection == true">
+    <ng-container *ngFor="let park of Parks; let i = index">
+        <div class="car {{animations[i]}} index{{i}}" *ngIf="park">
+            <div class='plate'>{{park}} </div>
+            <div class='brand'>{{Brands[i]}}</div>
+        </div>
+        <div class="empty index{{i}}" *ngIf="!park">
+            <div class='plate'>empty</div>
+            <div class='brand'>spot</div>
+        </div>
+    </ng-container>
+</div>
+
+
+
+<button class="connect" *ngIf="!connection || reconnect" (click)="connect()">Connect</button>
