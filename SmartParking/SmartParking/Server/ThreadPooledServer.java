@@ -17,21 +17,21 @@ import com.google.gson.Gson;
 public class ThreadPooledServer implements Runnable {
 
 	// Default port, you can change if necessary
-	protected int serverPort = 8080;							// default port	
-	protected ServerSocket serverSocket;						// socket where we receive the request
-	protected boolean isStopped = false;
-	protected ThreadPoolExecutor threadPool;					// threadpool to handle the request
-	protected volatile ConcurrentHashMap<String, String> park;	// park data structure
-	protected int N_available;									// number of parking spot
+	private int serverPort = 8080;							// default port	
+	private ServerSocket serverSocket;						// socket where we receive the request
+	private boolean isStopped = false;
+	private ThreadPoolExecutor threadPool;					// threadpool to handle the request
+	private volatile ConcurrentHashMap<String, String> park;	// park data structure
+	private int N_available;									// number of parking spot
 
 	/* ################################# Statistic ################################# */
 
 	// for thread in waiting state
-	protected int waitingThreads = 0;							// number of threads in wait
+	private int waitingThreads = 0;							// number of threads in wait
 
 	// for avg waiting time 
-	protected long waitingTime = 0;								// avg of waiting time
-	protected int waitingTotal = 0;								// number of thread used in avg
+	private long waitingTime = 0;								// avg of waiting time
+	private int waitingTotal = 0;								// number of thread used in avg
 
 
 	public ThreadPooledServer(int available) {

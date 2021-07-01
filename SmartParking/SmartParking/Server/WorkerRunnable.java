@@ -19,9 +19,9 @@ import java.time.LocalDateTime; 			// time for logfile
 // handle the request from client
 public class WorkerRunnable implements Runnable {
 
-	protected Socket clientSocket;							// socket to answer the client
-	protected ThreadPooledServer park;						// server of park
-	protected static String error_filename = "error.log";	// file for log of errors
+	private Socket clientSocket;							// socket to answer the client
+	private ThreadPooledServer park;						// server of park
+	private static String error_filename = "error.log";	// file for log of errors
 
 
 	public WorkerRunnable(Socket clientSocket, ThreadPooledServer park) {
