@@ -87,6 +87,7 @@ header {
 }
 
 .parkStatus {
+    padding-top: 10px;
     border-radius: 15px;
     width: 80%;
     margin-left: 10%;
@@ -139,10 +140,6 @@ header {
     height: 50px;
     display: inline-block;
     background-color: rgba(0, 189, 0, 0.7);
-}
-
-.index0 {
-    margin-top: 10px;
 }
 
 .overlay {

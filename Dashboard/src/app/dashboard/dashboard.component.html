@@ -32,11 +32,11 @@
 
 <div class="parkStatus" *ngIf="connection == true">
     <ng-container *ngFor="let park of Parks; let i = index">
-        <div class="car {{animations[i]}} index{{i}}" *ngIf="park">
+        <div class="car {{animations[i]}}" *ngIf="park">
             <div class='plate'>{{park}} </div>
             <div class='brand'>{{Brands[i]}}</div>
         </div>
-        <div class="empty index{{i}}" *ngIf="!park">
+        <div class="empty" *ngIf="!park">
             <div class='plate'>empty</div>
             <div class='brand'>spot</div>
         </div>
