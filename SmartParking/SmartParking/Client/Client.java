@@ -11,13 +11,12 @@ package SmartParking.Client;
 
 import java.net.Socket;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime; 
 
 public class Client extends Thread {
 	// Connection data
-	private String host;
+	private String server_ip;
 	private int port;
 	private Socket server;
 	private DataInputStream input;
@@ -49,8 +48,8 @@ public class Client extends Thread {
 		return brands[(int)(Math.random()*brands.length)];
 	}
 
-	public Client(String host, int port, int simulations) {
-		this.host = host;
+	public Client(String server_ip, int port, int simulations) {
+		this.server_ip = server_ip;
 		this.port = port;
 		this.simulations = simulations;
 		// create random plate
@@ -61,7 +60,7 @@ public class Client extends Thread {
 
 	// init of socket and input/output streams, throw Exception if impossible to connect to server (server closed)
 	private void init_socket() throws Exception {
-		server = new Socket(host, port);
+		server = new Socket(server_ip, port);
 
 		/* Max timeout for client socket (default is infinity, our server end comunication)
 		* server.setSoTimeout(40 * 1000);
@@ -109,7 +108,7 @@ public class Client extends Thread {
 	}
 
 	public static void main(String[] args){
-		String host;
+		String server_ip;
 		int port;
 		int threadNumber;
 		int simulations;
@@ -125,37 +124,45 @@ public class Client extends Thread {
 			// Take server ip
 	        if( (line = bufferreader.readLine()) == null) {
 	        	System.out.println("Bad config");
-	        	return;
+	        	bufferreader.close();
+                return;
 	        }
-	        host = line.split(":")[1];
+	        server_ip = line.split(":")[1];
 	        
 	        // Take server port
 	        if( (line = bufferreader.readLine()) == null) {
 	        	System.out.println("Bad config");
-	        	return;
+	        	bufferreader.close();
+                return;
 	        }
 	        port = Integer.parseInt(line.split(":")[1]);
 
 	        // Take number of threads
 	        if( (line = bufferreader.readLine()) == null) {
 	        	System.out.println("Bad config");
-	        	return;
+	        	bufferreader.close();
+                return;
 	        }
 	        threadNumber = Integer.parseInt(line.split(":")[1]);
 
 	        // Take number of simulations
 	        if( (line = bufferreader.readLine()) == null) {
 	        	System.out.println("Bad config");
+                bufferreader.close();
 	        	return;
 	        }
 	        simulations = Integer.parseInt(line.split(":")[1]);
+            bufferreader.close();
+
+            // Print info
+            System.out.println("\n#######################################################\nConnect with: " + server_ip + ":" + port + " with " + threadNumber + " cars.\nIt will run " + simulations + " simulations (enter/exit) before stop\n#######################################################\n");
 			
 	        // Create clients
 			Client[] threads = new Client[threadNumber];
 			
 			// Start execution
 			for(int i = 0; i < threadNumber; ++i) {
-				threads[i] = new Client(host, port, simulations);
+				threads[i] = new Client(server_ip, port, simulations);
 				threads[i].start();
 			}
 

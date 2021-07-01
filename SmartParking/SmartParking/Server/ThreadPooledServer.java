@@ -192,24 +192,31 @@ public class ThreadPooledServer implements Runnable {
 			// Take server port
 	        if( (line = bufferreader.readLine()) == null) {
 	        	System.out.println("Bad config");
-	        	return;
+	        	bufferreader.close();
+                return;
 	        }
 	        port = Integer.parseInt(line.split(":")[1]);
 	        
 	        // Take number of parking spot
 	        if( (line = bufferreader.readLine()) == null) {
 	        	System.out.println("Bad config");
-	        	return;
+	        	bufferreader.close();
+                return;
 	        }
 	        parkingSpots = Integer.parseInt(line.split(":")[1]);
 
 	        // Take TTL in seconds
 	        if( (line = bufferreader.readLine()) == null) {
 	        	System.out.println("Bad config");
+                bufferreader.close();
 	        	return;
 	        }
 	        time = Integer.parseInt(line.split(":")[1]);
+            bufferreader.close();
 			
+            // Print info
+            System.out.println("\n#######################################################\nServer running on localhost:" + port + " with " + parkingSpots + " parking lots.\nIt will be open for " + time + " seconds\n#######################################################\n");
+
 			// Create server and start execution
 	        ThreadPooledServer server = new ThreadPooledServer(port, parkingSpots);	// insert here (the port and) the number of parking spot
 			new Thread(server).start();	// start the server
