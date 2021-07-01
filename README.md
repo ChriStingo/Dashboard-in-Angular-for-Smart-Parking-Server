@@ -10,7 +10,7 @@ Here you can find the Angular application. This Dashboard sends an http request 
 Check the README inside the folder for instructions.
 
 ### SmartParking
-Here you can find the Java Server and Client architecture. The Client simulates cars with plates and brands. Every car is a thread. Every thread, with random delay, asks to the server to enter or exit the parking lot.
+Here you can find the Server and Client architecture in Java. The Client simulates cars with plates and brands. Every car is a thread. Every thread, with random delay, asks to the server to enter or exit the parking lot.
 The Server accept every request, create a thread to answer and try to satisfy client request. If it's not possible puts him on hold until another car leave the parking lot.
 ![Client-Server](https://user-images.githubusercontent.com/62427405/124153436-b7499580-da94-11eb-96cb-27ba9a9cbebc.png)
 
