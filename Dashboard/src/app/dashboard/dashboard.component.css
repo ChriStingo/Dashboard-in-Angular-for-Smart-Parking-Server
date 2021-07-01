@@ -7,6 +7,8 @@ html, body {
     width: 100%;
 }
 
+/* ############################## Header ############################## */
+
 header {
     width: 80%;
     margin-left: 10%;
@@ -57,6 +59,7 @@ header {
     outline:none;
 }
 
+/* ############################## Park info ############################## */
 
 .info {
     width: 80%;
@@ -85,6 +88,22 @@ header {
     width: 30%;
     margin-left: 5%;
 }
+
+.status_true {
+    color: green;
+    font-weight: bold;
+}
+
+.status_false {
+    color: red;
+    font-weight: bold;
+}
+
+.spanQueue {
+    font-weight: bold;
+}
+
+/* ############################## Parking lots ############################## */
 
 .parkStatus {
     padding-top: 10px;
@@ -142,6 +161,8 @@ header {
     background-color: rgba(0, 189, 0, 0.7);
 }
 
+/* ############################## Pop up ############################## */
+
 .overlay {
     position: fixed;
     display: show;
@@ -186,14 +207,7 @@ header {
     border-radius: 10px 10px 0px 0px;
 }
 
-.button {
-    width: 50px;
-    height: 50px;
-    color: #fff;
-    font-weight: bolder;
-    border-radius: 10px;
-    background: silver;
-}
+/* ############################## Connect button ############################## */
 
 .connect {
     position: fixed;
@@ -216,63 +230,68 @@ header {
     color: white;
 }
 
-.status_true {
-    color: green;
-    font-weight: bold;
-}
-
-.status_false {
-    color: red;
-    font-weight: bold;
-}
-
-.spanQueue {
-    font-weight: bold;
-}
-
 @media screen and (max-width: 890px) {
-    .left, .center, .right {
-        text-align: left;
-        display: block;
-        width: 100%;
-        margin-left: 0;
-    }
-    .info {
-        font-size: 20px;
-    }
-    .plate {
-        margin-top: 8px;
-        margin-bottom: 0;
-    }
-    .plate, .empty {
-        font-size: 13px;
-    }
-    .brand {
-        font-size: 8px;
-    }
-    .spanNumber, .spanQueue, .status_false, .status_true {
-        position: absolute;
-        right: 10%;
-    }
+
+    /* ############################## Header ############################## */
+
     header {
         margin: 0;
         margin-top: -15px;
         width: 100%;
         margin-bottom: 15px;
     }
+
     .title {
         display: none;
     }
+
     .port {
         width: 15%;
         margin-right: 10px;
     }
+
     .server {
         float: left;
         margin-left: 10px;
         margin-right: auto;
         width: 75%;
     }
+
+    /* ############################## Park info ############################## */
+
+    .left, .center, .right {
+        text-align: left;
+        display: block;
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .info {
+        font-size: 20px;
+    }
+
+    .spanNumber, .spanQueue, .status_false, .status_true {
+        position: absolute;
+        right: 10%;
+    }
+
+    /* ############################## Parking lots ############################## */
+
+    .plate {
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+
+    .plate, .empty {
+        font-size: 13px;
+    }
+
+    .brand {
+        font-size: 8px;
+    }
+
+    /* ############################## Pop up ############################## */
+    
     .popup {
         width: 80%;
         left: 10%;
