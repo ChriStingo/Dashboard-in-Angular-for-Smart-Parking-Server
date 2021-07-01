@@ -3,7 +3,6 @@ This is my bachelor degree thesis about "concurrent programming and distributed 
 The dashbaord displays che status of the car park with some informations abount the queue time and the and the fill percentage.
 ![execution](https://user-images.githubusercontent.com/62427405/124155268-9aae5d00-da96-11eb-82a9-0f18ccb296b0.png)
 
-
 ### Dashboard
 Here you can find the Angular application. This Dashboard sends an http request to the server and parse data and display them with some cool charts and animations.
 ![dashboard-server](https://user-images.githubusercontent.com/62427405/124153899-3dfe7280-da95-11eb-8b5a-ac4b94620256.png)
@@ -17,4 +16,5 @@ The Server accept every request, create a thread to answer and try to satisfy cl
 
 Check the README inside the folder for instructions.
 
-All the platform is distributed, you can change che ip and port for every component (Client, Server, Dashboard) and run them on different machines.
+-----
+**All the platform is distributed, you can change che ip and port for every component (Client, Server, Dashboard) and run them on different machines.**
