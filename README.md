@@ -17,4 +17,4 @@ The Server accept every request, create a thread to answer and try to satisfy cl
 Check the README inside the folder for instructions.
 
 -----
-**All the platform is distributed, you can change che ip and port for every component (Client, Server, Dashboard) and run them on different machines.**
+**All the platform is distributed, you can change the ip and port for every component (Client, Server, Dashboard) and run them on different machines.**
