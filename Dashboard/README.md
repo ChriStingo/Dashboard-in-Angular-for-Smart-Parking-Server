@@ -1,6 +1,6 @@
 # Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4. Inside src/app/ there is the code to implement the Dashboard.
 
 ## Development server
 
