@@ -1,5 +1,7 @@
 package SmartParking.Client;
 
+import java.net.InetSocketAddress;
+
 /*
 	Author: Christian Stingone
 
@@ -18,6 +20,7 @@ public class Client extends Thread {
 	// Connection data
 	private String server_ip;
 	private int port;
+    private int timeout = 0;
 	private Socket server;
 	private DataInputStream input;
 	private OutputStream output;
@@ -48,7 +51,7 @@ public class Client extends Thread {
 		return brands[(int)(Math.random()*brands.length)];
 	}
 
-	public Client(String server_ip, int port, int simulations) {
+	public Client(String server_ip, int port, int simulations, int timeout) {
 		this.server_ip = server_ip;
 		this.port = port;
 		this.simulations = simulations;
@@ -56,15 +59,15 @@ public class Client extends Thread {
 		plate = randomPlate();
 		// create random brand
 		brand = randomBrand();
+        this.timeout = timeout * 1000;
 	}
 
 	// init of socket and input/output streams, throw Exception if impossible to connect to server (server closed)
 	private void init_socket() throws Exception {
-		server = new Socket(server_ip, port);
+		server = new Socket();
 
-		/* Max timeout for client socket (default is infinity, our server end comunication)
-		* server.setSoTimeout(40 * 1000);
-		* --------------------------------------------------------------------------------*/
+        // Max timeout for client socket in seconds (0 = infinity, our server end comunication)
+        server.connect(new InetSocketAddress(server_ip, port), timeout);
 
 		input = new DataInputStream(server.getInputStream());	// to retrieve the response from server
 		output = server.getOutputStream();						// where we write to server
@@ -112,6 +115,7 @@ public class Client extends Thread {
 		int port;
 		int threadNumber;
 		int simulations;
+        int timeout;
 
 		// Read config file for server ip, port, number of threads and number of simulations
 		// Config file is 4 rows, every rows has name:data. I only need data, order is important.
@@ -152,6 +156,14 @@ public class Client extends Thread {
 	        	return;
 	        }
 	        simulations = Integer.parseInt(line.split(":")[1]);
+
+            // Take timeout time for socket
+	        if( (line = bufferreader.readLine()) == null) {
+	        	System.out.println("Bad config");
+                bufferreader.close();
+	        	return;
+	        }
+	        timeout = Integer.parseInt(line.split(":")[1]);
             bufferreader.close();
 
             // Print info
@@ -162,7 +174,7 @@ public class Client extends Thread {
 			
 			// Start execution
 			for(int i = 0; i < threadNumber; ++i) {
-				threads[i] = new Client(server_ip, port, simulations);
+				threads[i] = new Client(server_ip, port, simulations, timeout);
 				threads[i].start();
 			}
 
