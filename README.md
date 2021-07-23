@@ -1,5 +1,5 @@
 # Dashboard in Angular for Smart Parking Server
-This is my bachelor degree thesis about "concurrent programming and distributed algorithms".
+This is my bachelor degree thesis about "concurrent programming and distributed algorithms" made in 2021.
 The dashbaord displays the status of the parking with some informations about queue time and fill percentage.
 
 ![execution](https://user-images.githubusercontent.com/62427405/124155268-9aae5d00-da96-11eb-82a9-0f18ccb296b0.png)
